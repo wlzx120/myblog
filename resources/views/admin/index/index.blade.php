@@ -1,45 +1,57 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Laravel</title>
-
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-
-        <style>
-            html, body {
-                height: 100%;
-            }
-
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
-
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
-
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 96px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">后台首页</div>
+@extends('admin.layouts.default')
+@section('content')
+<div class="content-wrapper">
+    <section class="content-header">
+      <h1>
+        Page Header
+        <small>首页管理</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+        <li class="active">Here</li>
+      </ol>
+    </section>
+    <section class="content">
+        <div class='row'>
+    <div class='col-md-6'>
+        <!-- Box1 -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">盒子一</h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+            <div class="box-body">
+                <table></table>
+            </div>
+            <div class="box-footer">
+                <form action='#'>
+                    <input type='text' placeholder='New task' class='form-control input-sm' />
+                </form>
             </div>
         </div>
-    </body>
-</html>
+    </div>
+    <div class='col-md-6'>
+        <!-- Box2 -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">盒子二</h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+            <div class="box-body">
+                A separate section to add any kind of widget. Feel free
+                to explore all of AdminLTE widgets by visiting the demo page
+                on <a href="https://almsaeedstudio.com">Almsaeed Studio</a>.
+            </div>
+        </div>
+    </div>
+
+</div>
+    </section>
+  </div>
+@stop

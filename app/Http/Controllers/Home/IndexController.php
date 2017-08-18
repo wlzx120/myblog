@@ -9,6 +9,14 @@ use App\Http\Controllers\Controller;
 
 class IndexController extends Controller
 {
+    
+    public function __construct()
+    {
+        return view('home.index.about');
+        
+    }
+    
+    
     /**
      * Display a listing of the resource.
      *
@@ -17,6 +25,11 @@ class IndexController extends Controller
     public function index()
     {
         return view('home.index.index');
+    }
+    
+    public function about()
+    {
+        return view('home.index.about');
     }
 
     /**
