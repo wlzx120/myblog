@@ -12,3 +12,6 @@
 */
 Route::get('/admin','IndexController@index')->name('admin');
 
+//登录退出
+Route::get('/admin/login','SessionsController@index')->name('admin.login');
+Route::post('/admin/login','SessionsController@store')->name('admin.login');
