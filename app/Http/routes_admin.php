@@ -20,3 +20,5 @@ Route::get('/admin/logout','SessionsController@destroy')->name('admin.logout');
 //图片验证码
 Route::get('/admin/yzm', 'SessionsController@captcha')->name('admin.yzm');
 
+//article
+Route::resource('/admin/articles','ArticlesController');

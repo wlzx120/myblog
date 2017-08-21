@@ -34,14 +34,14 @@
           </ul>
         </li>
         <li class="treeview">
-          <a href="#"><i class="fa fa-link"></i> <span>下拉菜单二</span>
+          <a href="javascript:void(0)"><i class="fa fa-link"></i> <span>文章管理</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#">列表一</a></li>
-            <li><a href="#">列表二</a></li>
+            <li><a href="{{ route('admin.articles.create') }}">添加文章</a></li>
+            <li><a href="{{ route('admin.articles.index') }}">文章列表</a></li>
           </ul>
         </li>
       </ul>

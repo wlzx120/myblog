@@ -147,6 +147,7 @@ return [
         'available'             => '可用的',
         'size'                  => '大小',
         'yzm'                  => '图片验证码',
+        'author'                  => '作者',
     ],
     'yzmgz' => '图片验证码错误',
 
