@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Validator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +14,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        //自定义验证码规则  
+        Validator::extend('yzmgz', function($attribute, $value, $parameters){  
+            return $value == session('captcha');  
+        });  
     }
 
     /**

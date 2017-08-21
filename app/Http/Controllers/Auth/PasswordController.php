@@ -19,6 +19,9 @@ class PasswordController extends Controller
     */
 
     use ResetsPasswords;
+    
+    //提交后跳转
+    protected $redirectTo = '/';
 
     /**
      * Create a new password controller instance.

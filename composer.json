@@ -7,7 +7,9 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*",
-        "barryvdh/laravel-ide-helper": "^2.4"
+        "barryvdh/laravel-ide-helper": "^2.4",
+        "gregwar/captcha": "1.*",
+        "caouecs/laravel-lang": "~3.0"   
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

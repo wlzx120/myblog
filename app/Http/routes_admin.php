@@ -15,3 +15,8 @@ Route::get('/admin','IndexController@index')->name('admin');
 //登录退出
 Route::get('/admin/login','SessionsController@index')->name('admin.login');
 Route::post('/admin/login','SessionsController@store')->name('admin.login');
+Route::get('/admin/logout','SessionsController@destroy')->name('admin.logout');
+
+//图片验证码
+Route::get('/admin/yzm', 'SessionsController@captcha')->name('admin.yzm');
+

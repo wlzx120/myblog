@@ -7,30 +7,30 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class IndexController extends Controller
+class StaticPagesController extends Controller
 {
-    
-    public function __construct()
-    {
-        return view('home.index.about');
-        
-    }
-    
     
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function home()
     {
-        return view('home.index.index');
+        return view('home.static_pages.index');
     }
     
     public function about()
     {
-        return view('home.index.about');
+        return view('home.static_pages.about');
     }
+    
+    public function help()
+    {
+        return view('home.static_pages.help');
+    }
+    
+
 
     /**
      * Show the form for creating a new resource.

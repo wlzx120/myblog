@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Gregwar\Captcha\CaptchaBuilder;  
+use Illuminate\Support\Facades\Session;
 
 class SessionsController extends Controller
 {
@@ -18,21 +21,26 @@ class SessionsController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * 登录动作
      */
     public function store(Request $request)
     {
-        return redirect()->route($route);
+        $this->validate($request,[
+            'email' => 'required|email',
+            'password' => 'required|min:6',
+            'yzm' => 'required|string|yzmgz',  
+        ]);
+        $credentials = [
+            'email' => $request->email,
+            'password' => $request->password
+        ];
+        if(Auth::attempt($credentials,$request->has('remember'))){
+            session()->flash('success','欢迎登录');
+            return redirect()->intended('admin');
+        }else{
+            session()->flash('danger','用户名或密码错误');
+            return redirect()->back();
+        }
     }
 
     /**
@@ -70,13 +78,27 @@ class SessionsController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * 退出登录
      */
-    public function destroy($id)
+    public function destroy()
     {
-        //
+        Auth::logout();
+        session()->flash('success','退出成功');
+        return redirect()->route('admin.login');
     }
+    
+    //验证码
+    public function captcha()  
+    {  
+        $builder = new CaptchaBuilder;  
+        $builder->build($width = 100, $height = 38, $font = null);  
+        $phrase = $builder->getPhrase();  
+        Session::flash('captcha', $phrase);  
+        header("Cache-Control: no-cache, must-revalidate");  
+        header('Content-Type: image/jpeg');  
+        $builder->output();  
+    }  
+    
+    
+    
 }

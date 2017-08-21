@@ -11,6 +11,9 @@
 |
 */
 
-Route::get('/', 'StaticPagesController@home');
-Route::get('/help', 'StaticPagesController@help')->name('help');
-Route::get('/about', 'StaticPagesController@about')->name('about');
+//密码重置
+Route::get('/password/email','Auth\PasswordController@getEmail')->name('password');
+Route::post('/password/email','Auth\PasswordController@postEmail')->name('password');
+
+Route::get('password/reset/{token}', 'Auth\PasswordController@getReset')->name('reset');
+Route::post('password/reset', 'Auth\PasswordController@postReset')->name('reset');

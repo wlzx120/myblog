@@ -15,27 +15,38 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
-<body class="hold-transition login-page" style="background-color:#3c8dbc">
-    <div class="login-box">
+<body class="hold-transition login-page" style="height:auto;background-color:#3c8dbc">
+<div class="login-box">
+   @include('admin.shared.errors')
+   @include('admin.shared.messages')
   <div class="login-logo">
       <a href="javascript:void(0)"><b style="color:#fff">后台管理系统</b></a>
   </div>
   <div class="login-box-body">
     <p class="login-box-msg">请填写登录信息</p>
-    <form action="../../index2.html" method="post">
+    <form action="{{ route('admin.login') }}" method="post">
+        {{ csrf_field() }}
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email">
+          <input type="email" name="email" class="form-control" placeholder="Email" value="{{ old('email') }}">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password">
+        <input type="password" name="password" class="form-control" placeholder="Password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      <div class="row">
+        <div class="col-xs-4">
+            <input type="text" name="yzm"  class="form-control" placeholder="验证码">
+        </div>
+        <div class="col-xs-4">
+             <img src="{{ route('admin.yzm') }}" onclick="javascript:this.src='{{ route('admin.yzm') }}?tm='+Math.random()" height="34px">  
+        </div>
       </div>
       <div class="row">
         <div class="col-xs-8">
           <div class="checkbox icheck">
             <label>
-              <input type="checkbox"> 记住我
+                <input type="checkbox" name="remember"> 记住我
             </label>
           </div>
         </div>
@@ -43,6 +54,7 @@
           <button type="submit" class="btn btn-primary btn-block btn-flat">登录</button>
         </div>
       </div>
+        <a href="{{ route('password') }}">忘记密码</a>
     </form>
   </div>
 </div>
