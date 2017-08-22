@@ -146,6 +146,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         //提示插件
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        //ueditor
+        Stevenyangecho\UEditor\UEditorServiceProvider::class
 
     ],
 

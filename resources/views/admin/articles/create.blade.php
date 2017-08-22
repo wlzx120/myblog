@@ -1,8 +1,7 @@
 @extends('admin.layouts.default')
 @section('content')
 <div class="content-wrapper">
-    @include('admin.shared.messages')
-    @include('admin.shared.errors')
+    @include('admin.shared.tips')
     <section class="content-header">
       <h1>
         文章管理
@@ -15,7 +14,7 @@
     </section>
     <section class="content">
     <div class='row'>
-    <div class='col-md-8'>
+    <div class='col-md-12'>
         <div class="box box-info">
             <div class="box-header with-border">
               <h3 class="box-title">填写表单</h3>
@@ -38,7 +37,16 @@
                 <div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label">内容</label>
                   <div class="col-sm-10">
-                      <textarea name="content" class="form-control" id="inputPassword3" placeholder="内容" rows="10"></textarea>
+                      @include('vendor.UEditor.head')
+                    <!-- 加载编辑器的容器 -->
+                    <script id="container" name="content" type="text/plain" style='width:100%;height:300px;'></script>
+                    <!-- 实例化编辑器 -->
+                    <script type="text/javascript">
+                        var ue = UE.getEditor('container');
+                        ue.ready(function(){
+                            ue.execCommand('serverparam', '_token', '{{ csrf_token() }}'); 
+                        });
+                    </script>
                   </div>
                 </div>
               </div>

@@ -9,7 +9,8 @@
         "laravel/framework": "5.1.*",
         "barryvdh/laravel-ide-helper": "^2.4",
         "gregwar/captcha": "1.*",
-        "caouecs/laravel-lang": "~3.0"   
+        "caouecs/laravel-lang": "~3.0",
+        "stevenyangecho/laravel-u-editor": "^1.4"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
