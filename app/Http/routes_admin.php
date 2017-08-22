@@ -22,3 +22,7 @@ Route::get('/admin/yzm', 'SessionsController@captcha')->name('admin.yzm');
 
 //article
 Route::resource('/admin/articles','ArticlesController');
+Route::post('/admin/articles','ArticlesController@index')->name('admin.articles.search');
+
+
+

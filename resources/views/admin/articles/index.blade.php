@@ -9,7 +9,7 @@
         <small>文章列表</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Level </a></li>
         <li class="active">Here</li>
       </ol>
     </section>
@@ -48,7 +48,17 @@
                 </tr>
                 @endforeach
                 </tbody>
-              </table></div></div>
+              </table>
+            <form action="{{ route('admin.articles.search') }}" method="post">
+              <div class="col-md-3 input-group input-group-sm pull-left">
+                    {{ csrf_field() }}
+                  <input type="text" name='search_title' class="form-control" placeholder="标题搜索" />
+                <span class="input-group-btn">
+                  <button type="submit" class="btn btn-info btn-flat">Go!</button>
+                </span>
+              </div>
+            </form>
+                </div></div>
                   <div class="row">
                       <div class="col-sm-7">
                         <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">

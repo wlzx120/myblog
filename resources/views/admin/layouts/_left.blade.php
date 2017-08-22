@@ -20,19 +20,6 @@
       </form>
       <ul class="sidebar-menu">
         <li class="header">HEADER</li>
-        <li class="active"><a href="#"><i class="fa fa-link"></i> <span>链接</span></a></li>
-        <li><a href="#"><i class="fa fa-link"></i> <span>其他链接</span></a></li>
-        <li class="treeview">
-          <a href="#"><i class="fa fa-link"></i> <span>下拉菜单</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#">列表一</a></li>
-            <li><a href="#">列表二</a></li>
-          </ul>
-        </li>
         <li class="treeview">
           <a href="javascript:void(0)"><i class="fa fa-link"></i> <span>文章管理</span>
             <span class="pull-right-container">
@@ -44,6 +31,19 @@
             <li><a href="{{ route('admin.articles.index') }}">文章列表</a></li>
           </ul>
         </li>
+        <li class="treeview">
+          <a href="#"><i class="fa fa-link"></i> <span>其他管理</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#">列表一</a></li>
+            <li><a href="#">列表二</a></li>
+          </ul>
+        </li>
+        <li><a href="/admin-lte/index.html" target="_blank"><i class="fa fa-link"></i><span>其他链接</span></a></li>
+        <li><a href="/admin-lte/index.html" target="_blank"><i class="fa fa-link"></i><span>AdminLTE</span></a></li>
       </ul>
     </section>
   </aside>

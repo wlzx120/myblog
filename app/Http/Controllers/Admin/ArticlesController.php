@@ -13,9 +13,16 @@ class ArticlesController extends Controller
     /**
      * 列表页
      */
-    public function index()
+    public function index(Request $request)
     {
-        $articles = Article::paginate(3);
+        $Article = new Article;
+        //搜索条件
+        $where = $Article;
+        if($request->search_title){
+            $where = $Article->where('title','like','%'.$request->search_title.'%');
+        }
+        $articles = $where->paginate(3);
+        //$articles = Article::where('id','>','10')->where('is_auth','=','1')->where('id','=','14')->paginate(3);
         return view('admin.articles.index',compact('articles'));
     }
 
@@ -46,6 +53,7 @@ class ArticlesController extends Controller
         session()->flash('success','添加成功');
         return redirect()->route('admin.articles.index');
     }
+    
 
     /**
      * 详情页
