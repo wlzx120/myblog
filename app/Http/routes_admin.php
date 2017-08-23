@@ -22,7 +22,11 @@ Route::get('/admin/yzm', 'SessionsController@captcha')->name('admin.yzm');
 
 //article
 Route::resource('/admin/articles','ArticlesController');
-Route::post('/admin/articles','ArticlesController@index')->name('admin.articles.search');
+//新增重定义
+Route::post('/admin/articles/create','ArticlesController@store')->name('admin.articles.store');
+//列表搜索定义
+Route::post('/admin/articles','ArticlesController@index')->name('admin.articles.index');
 
-
+//sortarts
+Route::resource('/admin/sortarts','SortartsController');
 

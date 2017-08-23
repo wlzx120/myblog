@@ -18,7 +18,32 @@
     <div class="col-md-12">
         <div class="box box-info">
             <div class="box-header">
-              <h3 class="box-title">Hover Data Table</h3>
+              <div class="row">
+              <form action="{{ route('admin.articles.index') }}" method="post">
+                <div class="col-md-3">
+                    <div class="col-md-12 input-group input-group-sm ">
+                        <select name="search_sid" class="form-control">
+                            <option value="">选择分类</option>
+                            @foreach($sorts as $sort)
+                            <option value="{{ $sort->id }}">{{ $sort->name }}</option>
+                            @endforeach
+                        </select>
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-info btn-flat">分类搜索</button>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="col-md-12 input-group input-group-sm ">
+                        {{ csrf_field() }}
+                        <input type="text" name='search_title' class="form-control" placeholder="标题搜索" />
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-info btn-flat">标题搜索</button>
+                        </span>
+                    </div>
+                </div>
+              </form>
+              </div>
             </div>
             <div class="box-body">
             <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
@@ -26,7 +51,8 @@
             <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
                 <thead>
                 <tr role="row">
-                    <th rowspan="1" colspan="1">文章id</th><th rowspan="1" colspan="1">作者</th><th rowspan="1" colspan="1">标题</th>
+                    <th rowspan="1" colspan="1">文章id</th><th rowspan="1" colspan="1">作者</th>
+                    <th rowspan="1" colspan="1">分类</th><th rowspan="1" colspan="1">标题</th>
                     <th rowspan="1" colspan="1">添加时间</th><th rowspan="1" colspan="1">操作</th></tr>
                 </tr>
                 </thead>
@@ -35,6 +61,7 @@
                 <tr role="row" class="odd">
                   <td class="sorting_1">{{ $article->id }}</td>
                   <td>{{ $article->author }}</td>
+                  <td>{{ $article->sort->name }}</td>
                   <td>{{ $article->title }}</td>
                   <td>{{ $article->created_at }}</td>
                   <td>
@@ -49,25 +76,11 @@
                 @endforeach
                 </tbody>
               </table>
-            <form action="{{ route('admin.articles.search') }}" method="post">
-              <div class="col-md-3 input-group input-group-sm pull-left">
-                    {{ csrf_field() }}
-                  <input type="text" name='search_title' class="form-control" placeholder="标题搜索" />
-                <span class="input-group-btn">
-                  <button type="submit" class="btn btn-info btn-flat">Go!</button>
-                </span>
-              </div>
-            </form>
                 </div></div>
                   <div class="row">
                       <div class="col-sm-7">
                         <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
-                            
-<!--                            <ul class="pagination"><li class="paginate_button previous disabled" id="example2_previous"><a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0">Previous</a></li><li class="paginate_button active"><a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0">1</a></li>
-                                <li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="2" tabindex="0">2</a></li><li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="3" tabindex="0">3</a></li><li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="4" tabindex="0">4</a></li>
-                                <li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="5" tabindex="0">5</a></li><li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="6" tabindex="0">6</a></li><li class="paginate_button next" id="example2_next"><a href="#" aria-controls="example2" data-dt-idx="7" tabindex="0">Next</a></li>
-                            </ul>-->
-                            {!! $articles->render() !!}
+                            {!! $articles->appends(['search_sid'=>$articles->sid, 'search_title'=>$articles->title])->render() !!}
                         </div>
                       </div>
                   </div>

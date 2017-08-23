@@ -29,6 +29,20 @@
                   </div>
                 </div>
                 <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">选择分类</label>
+                  <div class="col-sm-10">
+                      <select name="sort_id" class="form-control">
+                            @foreach($sorts as $sort)
+                            @if($sort->id == 1)
+                            <option value="{{ $sort->id }}" selected>{{ $sort->name }}</option>
+                            @else
+                            <option value="{{ $sort->id }}">{{ $sort->name }}</option>
+                            @endif
+                            @endforeach
+                      </select>
+                  </div>
+                </div>
+                <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label">作者</label>
                   <div class="col-sm-10">
                       <input type="text" name="author" class="form-control" id="inputEmail3" placeholder="作者">

@@ -20,6 +20,7 @@
               <h3 class="box-title">填写表单</h3>
             </div>
             <form class="form-horizontal" method="post" action="{{ route('admin.articles.update',[$article->id]) }}">
+                <input type="hidden" name="oldurl" value="{{ $article->oldurl }}"  />
                 {{ csrf_field() }}
                 {{ method_field('PATCH') }}
               <div class="box-body">
@@ -27,6 +28,20 @@
                   <label for="inputEmail3" class="col-sm-2 control-label">标题</label>
                   <div class="col-sm-10">
                       <input type="text" name="title" class="form-control" id="inputEmail3" placeholder="标题" value="{{ $article->title }}">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">选择分类</label>
+                  <div class="col-sm-10">
+                      <select name="sort_id" class="form-control">
+                            @foreach($sorts as $sort)
+                            @if($sort->id == $article->sort_id)
+                            <option value="{{ $sort->id }}" selected>{{ $sort->name }}</option>
+                            @else
+                            <option value="{{ $sort->id }}">{{ $sort->name }}</option>
+                            @endif
+                            @endforeach
+                      </select>
                   </div>
                 </div>
                 <div class="form-group">

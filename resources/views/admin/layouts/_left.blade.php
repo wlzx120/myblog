@@ -32,6 +32,17 @@
           </ul>
         </li>
         <li class="treeview">
+          <a href="javascript:void(0)"><i class="fa fa-link"></i> <span>分类管理</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ route('admin.sortarts.create') }}">添加分类</a></li>
+            <li><a href="{{ route('admin.sortarts.index') }}">分类列表</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>其他管理</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
