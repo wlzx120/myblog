@@ -10,23 +10,27 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::get('/admin','IndexController@index')->name('admin');
 
 //登录退出
 Route::get('/admin/login','SessionsController@index')->name('admin.login');
-Route::post('/admin/login','SessionsController@store')->name('admin.login');
+Route::post('/admin/login','SessionsController@store')->name('admin.login')->middleware('role');
 Route::get('/admin/logout','SessionsController@destroy')->name('admin.logout');
 
 //图片验证码
 Route::get('/admin/yzm', 'SessionsController@captcha')->name('admin.yzm');
 
-//article
-Route::resource('/admin/articles','ArticlesController');
-//新增重定义
-Route::post('/admin/articles/create','ArticlesController@store')->name('admin.articles.store');
-//列表搜索定义
-Route::post('/admin/articles','ArticlesController@index')->name('admin.articles.index');
+//后台路由组
+Route::group(['middleware' => 'adminAuth'], function () {
+    Route::get('/admin','IndexController@index')->name('admin');
+    Route::resource('/admin/articles','ArticlesController');
+    //新增重定义
+    Route::post('/admin/articles/create','ArticlesController@store')->name('admin.articles.store');
+    //列表搜索定义
+    Route::post('/admin/articles','ArticlesController@index')->name('admin.articles.index');
+    //sortarts
+    Route::resource('/admin/sortarts','SortartsController');
+      
+});
 
-//sortarts
-Route::resource('/admin/sortarts','SortartsController');
+
 

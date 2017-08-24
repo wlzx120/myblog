@@ -18,6 +18,7 @@
 <body class="hold-transition login-page" style="height:auto;background-color:#3c8dbc">
 <div class="login-box">
    @include('admin.shared.errors')
+   @include('admin.shared.messages')
   <div class="login-logo">
       <a href="javascript:void(0)"><b style="color:#fff">后台管理系统</b></a>
   </div>

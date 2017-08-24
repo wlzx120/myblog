@@ -22,9 +22,9 @@ class ArticlesController extends Controller
     public function index(Request $request)
     {
         $sorts = Sortart::all();
-        $Article = new Article;
+        $article = new Article;
         //搜索条件
-        $where = $Article;
+        $where = $article;
         if($request->search_sid){
             $where = $where->where('sort_id','=',$request->search_sid);
         }
